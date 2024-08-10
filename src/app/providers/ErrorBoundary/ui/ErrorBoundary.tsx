@@ -9,8 +9,7 @@ interface ErrorBoundaryState {
     hasError: boolean;
 }
 
-class ErrorBoundary
-    extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {
         super(props);
         this.state = { hasError: false };
@@ -28,6 +27,7 @@ class ErrorBoundary
         //   in ErrorBoundary (created by App)
         //   in div (created by App)
         //   in App
+        // eslint-disable-next-line no-console
         console.error(error, info.componentStack);
     }
 
