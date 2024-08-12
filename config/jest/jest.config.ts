@@ -1,3 +1,5 @@
+import path from 'path';
+
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -20,12 +22,14 @@ export default {
     testEnvironment: 'jsdom',
 
     // Indicates whether the coverage information should be collected while executing the test
-    collectCoverage: true,
+    // collectCoverage: true, // Для отчета
 
     // An array of directory names to be searched recursively up from the requiring module's location
     moduleDirectories: [
         'node_modules',
     ],
+
+    modulePaths: ['<rootDir>src'],
 
     // An array of file extensions your modules use
     moduleFileExtensions: [
@@ -48,10 +52,17 @@ export default {
     // The root directory that Jest should scan for tests and modules within
     rootDir: '../../',
 
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+
     // The glob patterns Jest uses to detect test files
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
+
+    moduleNameMapper: {
+        '\\.s?css$': 'identity-obj-proxy',
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    },
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
